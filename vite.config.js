@@ -4,9 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/vlad-zaloilov.github.io" ,
   plugins: [
     react(),
     tailwindcss()
-  ],
-  base: "/vlad-zaloilov.github.io"
+  ]
 })
