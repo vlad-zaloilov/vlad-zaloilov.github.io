@@ -2,7 +2,7 @@
   "name": "vlad-zaloilov.github.io",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://vlad-zaloilov/vlad-zaloilov.github.io/",
+  "homepage": "https://vlad-zaloilov.github.io/vlad-zaloilov.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",
