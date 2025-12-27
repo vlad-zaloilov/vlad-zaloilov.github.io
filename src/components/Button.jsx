@@ -1,5 +1,13 @@
-import { useState } from 'react';
-import "../styling.css"
+import { useState } from "react";
+import "../styling.css";
+
+export function HeaderButton({buttonText}) {
+    return (
+        <button className="headerbutton">
+            {buttonText}
+        </button>
+    );
+}
 
 export function Button() {
     const [count, setCount] = useState(0);
