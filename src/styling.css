@@ -5,15 +5,49 @@
 /* Tailwind for animations */
 @import "tailwindcss";
 
-.clean {
-    display: flex;
+.base {
+    min-height:200vh;
+    display:flex;
     flex-direction: column;
+}
 
-    padding: 0%;
-    height:100%;
+.content {
+    flex: 1;
+}
+
+.background-viewport {
+    z-index: 1;
+
+    shape-outside: margin-box;
     width:100%;
+    height:100%;
 
-    box-sizing:border-box;
+    position:absolute;
+    top:-10%;
+}
+
+.header-row {
+    z-index:2;
+    
+    justify-content:space-evenly;
+
+    width:100%;
+    color:#d0deff;
+    background-color:rgb(132, 132, 132);
+    position:sticky;
+    top:0;
+}
+
+.footer-row {
+    z-index:2;
+    display:flex;
+
+    justify-content:space-evenly;
+
+    padding:2%;
+    width:100%;
+    color:#d0deff;
+    background-color: #4f4f4f;
 }
 
 .poppins-thin {
@@ -23,7 +57,7 @@
 }
 
 html {
-    background-color: #333333;
+    background-color: #131313;
 }
 
 * {
@@ -49,7 +83,7 @@ h1 {
 
 h2 {
     background-color: #66666600;
-    color:rgb(169, 169, 169);
+    color:#bebebe;
     padding:0%;
     margin:0%;
 }
@@ -62,61 +96,72 @@ h3 {
     text-align:center;
 }
 
-.viewport-background {
+.display-flex-row {
+    display:flex;
+    flex-direction: row;
+}
 
+.display-flex-col {
+    display:flex;
+    flex-direction: column;
+}
+
+.align-self-center {
     align-self:center;
+}
 
-    width:25rem;
-    height:25rem;
+.justify-self-center {
+    justify-self:center;
+}
 
-    padding: 1%;
-    margin: 1% 1% 1% 1%;
-    background-color: #333333;
-
-    border-radius: 2rem;
+.spaced-container {
+    display:flex;
+    width: 100%;
 }
 
 .section-row {
-    z-index: 0;
-    min-height:fit-content;
+    z-index: 1;
     padding: 1%;
     margin: 1% 1% 1% 1%;
     background-color: rgb(34, 34, 34);
     border-radius:2rem;
+    position:relative;
 }
 
-.section-inner-row {
+.content-text {
     z-index: 0;
-    min-height:fit-content;
-    padding: 1%;
-    margin: 1% 1% 1% 1%;
-    background-color: #333333;
-    border-radius:2rem;
-}
-
-.section-text {
     font-size: 1.5rem;
-    padding:1rem;
+    padding:0rem;
+    margin:1rem;
+    position:relative;
 }
 
 .content-row {
-    display:flex;
-    flex-direction:row;
-
-    z-index: 0;
-
-    min-width:fit-content;
-    min-height:fit-content;
-    padding: 1%;
-    margin: 1% 1% 1% 1%;
+    z-index: 1;
+    justify-content:space-around;
+    margin: 1% 0% 1% 0%;
+    padding: 2%;
     background-color: rgb(34, 34, 34);
-    border-radius:2rem;
+    border-radius:0rem;
+    position:relative;
+    box-shadow: 0rem 0.7rem 0rem rgb(14, 14, 14);
+}
+
+.content-inner-row {
+    z-index: 0;
+    background-color: #333333;
+    border-radius:1rem;
+    padding:1%;
+    position:relative;
 }
 
 .title {
-    font-size: 3rem;
-    justify-self:center;
-    font-weight: 200;
+    z-index: 1;
+    font-size: 5rem;
+    font-weight: 300;
+    color:#d6d6d6;
+    position:relative;
+    text-shadow: 0rem 0.5rem 0rem rgb(43, 43, 43);
 }
 
 .array-row {
@@ -124,6 +169,7 @@ h3 {
     padding: 0%;
     background-color: #333333;
     border-radius: 0%;
+    position:relative;
 }
 
 .header-row-inset {
@@ -135,32 +181,12 @@ h3 {
     background-color: rgb(123, 123, 123);
 }
 
-.header-row {
-    z-index:1;
-
-    display:flex;
-    flex-direction: row;
-    
-    justify-content:space-evenly;
-
-    min-height:fit-content;
-    max-height:fit-content;
-    width:100%;
-
-    align-self:center;
-
-    font-size: 400;
-    color:#d0deff;
-    background-color:rgb(132, 132, 132);
-}
-
 .headerbutton {
     transition: transform 0.1s, background-color 0.1s, color 0.1s, height 0.1s;
 
     margin: 0% 0% 0% 0%;
     text-align:center;
 
-    min-height:fit-content;
     height:4rem;
 
     width:25%;
@@ -189,14 +215,17 @@ h3 {
 
 
 .button1 {
+    flex: 1;
+    z-index:1;
+
     transition: transform 0.1s, background-color 0.1s, color 0.1s, box-shadow 0.1s;
 
     font-family: 'Montserrat';
     font-weight: 300;
     font-optical-sizing: auto;
     font-style: italic;
-    color:rgb(231, 231, 231);
-    text-align: start;
+    color:#cdcdcd;
+    text-align: center;
 
     background-color: rgb(41, 41, 41);
     border:#4f4f4f;
@@ -206,9 +235,8 @@ h3 {
     padding:1rem;
     margin: 1rem;
 
-    width: max-content;
     box-sizing:border-box;
-    align-self:center;
+    position:relative;
 }
 
 .button1:hover {
@@ -222,7 +250,19 @@ h3 {
     box-shadow: 0px 0.7rem 0px rgb(41, 46, 75);
 }
 
-.viewport {
+.content-viewport-wrapper {
+    aspect-ratio: 1/1;
+
+    height:15%;
+
+    padding: 0%;
+    margin: 0;
+    background-color: #33333300;
+
+    border-radius: 1rem;
+}
+
+.content-viewport {
     height:100%;
     width:100%;
 }

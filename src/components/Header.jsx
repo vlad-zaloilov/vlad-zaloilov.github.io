@@ -2,7 +2,7 @@ import { HeaderButton } from "../components/Button"
 
 import "../styling.css"
 
-export function Header() {
+export default function Header() {
 
     return(
         <div className="header-row">

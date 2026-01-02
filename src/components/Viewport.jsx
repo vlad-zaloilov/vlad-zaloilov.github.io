@@ -26,9 +26,9 @@ const rotMatrix = new Matrix3(
 rotVector = rotVector.applyMatrix3(rotMatrix);
 console.log(rotVector);
 
-export function Viewport() {
+export function ContentViewport() {
     return(
-        <div className="viewport">
+        <div className="content-viewport">
             <Canvas
                 camera={{near: 0.1, far: 1000, position: rotVector}}
                 fallback=
@@ -42,6 +42,26 @@ export function Viewport() {
                 <ambientLight intensity={1} color="#7afff2" />
                 <pointLight position={[0, 0, 0]} intensity={1} distance={0} decay={0} />
                 <OrbitControls enablePan={false} target={[-0.04, 0.1, 0]} />
+            </Canvas>
+        </div>
+    );
+}
+
+export function BackgroundViewport() {
+    return(
+        <div className="background-viewport">
+            <Canvas
+                camera={{near: 0.1, far: 1000}}
+                fallback=
+                {<div>This website has some WebGL 3D graphics,
+                but it seems that your device doesn't support WebGL</div>}
+            >
+                <mesh>
+                    <boxGeometry args={[1, 1, 1]} />
+                    <meshBasicMaterial color="#ffffff"/>
+                </mesh>
+                <ambientLight intensity={1} color="#7afff2" />
+                <pointLight position={[0, 0, 0]} intensity={1} distance={0} decay={0} />
             </Canvas>
         </div>
     );
