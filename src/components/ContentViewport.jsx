@@ -3,7 +3,6 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { SphereGeometry, Matrix3, Vector3 } from "three";
 import { ObjMeshLoader } from "../helpers/ObjMeshLoader";
 import { OrbitControls } from "@react-three/drei";
-import { CustomGridHelper } from "./CustomGridHelper";
 
 import { Html } from "@react-three/drei";
 
@@ -42,26 +41,6 @@ export function ContentViewport() {
                 <ambientLight intensity={1} color="#7afff2" />
                 <pointLight position={[0, 0, 0]} intensity={1} distance={0} decay={0} />
                 <OrbitControls enablePan={false} target={[-0.04, 0.1, 0]} />
-            </Canvas>
-        </div>
-    );
-}
-
-export function BackgroundViewport() {
-    return(
-        <div className="background-viewport">
-            <Canvas
-                camera={{near: 0.1, far: 1000}}
-                fallback=
-                {<div>This website has some WebGL 3D graphics,
-                but it seems that your device doesn't support WebGL</div>}
-            >
-                <mesh>
-                    <boxGeometry args={[1, 1, 1]} />
-                    <meshBasicMaterial color="#ffffff"/>
-                </mesh>
-                <ambientLight intensity={1} color="#7afff2" />
-                <pointLight position={[0, 0, 0]} intensity={1} distance={0} decay={0} />
             </Canvas>
         </div>
     );

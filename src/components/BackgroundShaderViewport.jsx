@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect, useMemo, useContext } from "react";
 import { extend, Canvas, useFrame, useThree, invalidate } from "@react-three/fiber";
 import { SphereGeometry, Matrix3, Vector3 } from "three";
+import { OrthographicCamera } from "@react-three/drei";
 import { ObjMeshLoader } from "../helpers/ObjMeshLoader";
 import { OrbitControls } from "@react-three/drei";
-import { CustomGridHelper } from "./CustomGridHelper";
 import * as THREE from "three";
 
 import BackgroundFragmentShader from "./BackgroundFragmentShader.glsl";
@@ -17,14 +17,15 @@ function BackgroundShader() {
     const [mouse, setMouse] = useState({ x:0, y:0 });
     const dpr = window.devicePixelRatio;
 
-    function handleMouseMove() {
-        setMouse({
-            x: event.clientX * dpr,
-            y: (window.innerHeight - event.clientY) * dpr
-        });
-    };
-
     useEffect(() => {
+        function handleMouseMove() {
+            setMouse({
+                x: event.clientX * dpr,
+                y: (window.innerHeight - event.clientY) * dpr
+            });
+        };
+        
+        
         window.addEventListener("mousemove", handleMouseMove);
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
@@ -77,19 +78,16 @@ function BackgroundShader() {
 
 export function BackgroundShaderViewport() {
     return(
-        <div className = "background-viewport">
-            <Canvas
-                orthographic camera={{near: 0.1, far: 1000, position: [0, 0, 1]}}
-                fallback=
-                {<div>This website has some WebGL 3D graphics,
-                but it seems that your device doesn't support WebGL</div>}
-            >
-                <mesh wireframe={true} transparent={true} >
-                    <planeGeometry args={[window.innerWidth, window.innerHeight, 1]} />
-                    <BackgroundShader/>
-                </mesh>
-                <ambientLight intensity={5}/>
-            </Canvas>
-        </div>
+        <Canvas
+            fallback=
+            {<div>This website has some WebGL 3D graphics,
+            but it seems that your device doesn't support WebGL</div>}
+        >
+            <OrthographicCamera/>
+            <mesh wireframe={true} transparent={true} >
+                <planeGeometry args={[window.innerWidth, window.innerHeight, 1]} />
+                <BackgroundShader/>
+            </mesh>
+        </Canvas>
     );
 }

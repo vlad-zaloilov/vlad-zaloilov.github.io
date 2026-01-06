@@ -6,7 +6,6 @@
 @import "tailwindcss";
 
 .base {
-    min-height:200vh;
     display:flex;
     flex-direction: column;
 }
@@ -15,15 +14,37 @@
     flex: 1;
 }
 
-.background-viewport {
+.link {
+    padding:0%;
+    font-family: 'Poppins';
+    font-optical-sizing: auto;
+    font-weight:bold;
+    font-size:1.7rem;
+    text-decoration:underline;
+    color:#74beff;
+}
+
+.break {
+    margin:1% 0% 1% 0%;
+}
+
+.background-viewport-container {
     z-index: 1;
 
-    shape-outside: margin-box;
     width:100%;
     height:100%;
-
     position:absolute;
-    top:-10%;
+    top:-5%;
+}
+
+.background-viewport-base {
+    width:100%;
+    height:100%;
+}
+
+.grid-viewport-container {
+    z-index: 1;
+    width:100%;
 }
 
 .header-row {
@@ -46,8 +67,8 @@
 
     padding:2%;
     width:100%;
-    color:#d0deff;
-    background-color: #4f4f4f;
+    color:#dcdcdc;
+    background-color: #303030;
 }
 
 .poppins-thin {
@@ -57,7 +78,7 @@
 }
 
 html {
-    background-color: #131313;
+    background: linear-gradient(#131313, rgb(0, 0, 0));
 }
 
 * {
@@ -120,7 +141,7 @@ h3 {
 }
 
 .section-row {
-    z-index: 1;
+    z-index: 0;
     padding: 1%;
     margin: 1% 1% 1% 1%;
     background-color: rgb(34, 34, 34);
@@ -139,13 +160,14 @@ h3 {
 .content-row {
     z-index: 1;
     justify-content:space-around;
-    margin: 1% 0% 1% 0%;
-    padding: 2%;
+    margin: 3% 0% 3% 0%;
+    padding: 2% 5% 2% 5%;
     background-color: rgb(34, 34, 34);
     border-radius:0rem;
     position:relative;
     box-shadow: 0rem 0.7rem 0rem rgb(14, 14, 14);
 }
+
 
 .content-inner-row {
     z-index: 0;
@@ -155,9 +177,29 @@ h3 {
     position:relative;
 }
 
+.hollow-row {
+    z-index: 1;
+    justify-content:space-around;
+    margin: 3% 0% 3% 0%;
+    padding: 1%;
+    background-color: rgba(29, 29, 29, 0.811);
+    border-radius:0rem;
+    box-shadow: 0rem 0.7rem 0rem rgb(14, 14, 14);
+    position:relative;
+}
+
 .title {
     z-index: 1;
     font-size: 5rem;
+    font-weight: 300;
+    color:#d6d6d6;
+    position:relative;
+    text-shadow: 0rem 0.5rem 0rem rgb(43, 43, 43);
+}
+
+.subtitle {
+    z-index: 1;
+    font-size: 1.5rem;
     font-weight: 300;
     color:#d6d6d6;
     position:relative;

@@ -6,60 +6,43 @@ uniform float iTimeDelta;
 I created this shader via ShaderToy and imported it into here by setting
 up appropriate conversions for ShaderToy's uniforms to the standard OpenGL ones
 
-If you're interested, here's a link to an older version of the shader:
-https://www.shadertoy.com/view/w3BfDd
+If you're interested, here's a link to the shader:
+https://www.shadertoy.com/view/WfGBDK
 
-TODO: Optimize shader, and figure out how to implement passthrough alpha transparency
-Also, fix dynamic resizing
+TODO: fix dynamic resizing
 */
 
-float a = 0.005;
-float b = 0.;
-float c = 5.;
+const float iter = 15.;
+const float a = 2.;
 
-const int iter = 5;
-
-
-float plot(vec2 st, float y, vec2 mouse){
-  return min(floor((y)/(st.y)), 1.);
+float plot(vec2 st, float y){
+    y-= st.y;
+    return smoothstep( 1., 0., (abs(y)/fwidth(y))/a );
 }
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
-
-    vec2 mouse = iMouse.xy/iResolution.xy;
-
-    vec2 uv = fragCoord/iResolution.xy;
-    float wset[iter];
+    float smallestRatio = 1./min(iResolution.x, iResolution.y);
     
-    for (int i = 0; i < iter; i++) {
-        wset[i] = 0.3*sin(((float(i+5))*uv.x+iTime))*length(uv.x - mouse.x)+0.5;
-    }
+    vec2 uv = (2.0*fragCoord.xy -iResolution.xy)*smallestRatio;
+    vec2 mouse = (2.0*iMouse.xy-iResolution.xy)*smallestRatio;
+    vec2 aspectRatio = (2.0*fragCoord.xy-iMouse.xy)*smallestRatio;
     
     
-    float wplot[iter];
-    float wplotcomplement[iter];
-    
-    for (int i = 0; i < iter; i++) {
-        wplot[i] = plot(uv, wset[i]+a, mouse);
-        wplotcomplement[i] = plot(uv, wset[i]-a, mouse);
-    }
-    
-    float render = 0.;
-    
-    for (int i = 1; i < iter; i++) {
-        render += (wplot[i]-wplotcomplement[i]);
-    }
-    
-    vec3 hue = vec3(b, b, b) + vec3(uv.x, uv.y, 0.);
-    
-	vec3 colour = vec3(0., 0., 0.);
-    
-    for (int i = 0; i < iter; i++) {
-        colour += hue*(wplot[i]-wplotcomplement[i]);
-    }
-
-    fragColor = vec4(colour, 1.0);
+    fragColor *= 0.;
+ 
+   float m = 0.;
+   float wset;
+   float dist = length(uv-mouse);
+   float radialDistort = 0.5/dist;
+   
+   for (float i = 1.; i < iter + 1.; i++) {
+       wset = 0.5*(sin((uv.x*i)+iTime)+i)/(max((i*radialDistort), i)+5.)+i/iter-1.1;
+       // m = min(m, abs(wset)/fwidth(wset));
+       // fragColor += clamp(vec4(fragCoord, 0., 0) * plot(fragCoord, wset), 0.0, 1.0);
+       m += clamp(plot(uv, wset), 0.0, 1.0);
+   }
+   fragColor = m * vec4(fragCoord.x/iResolution.x, (uv.y+1.)/2., 0., m) + vec4(0., 0., m*radialDistort, 0.); 
 }
 
 void main()
