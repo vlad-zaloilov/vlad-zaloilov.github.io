@@ -21,6 +21,7 @@ export function GridViewport() {
             fallback=
             {<div>This website has some WebGL 3D graphics,
             but it seems that your device doesn't support WebGL</div>}
+            frameloop="demand"
         >
             <PerspectiveCamera
             makeDefault

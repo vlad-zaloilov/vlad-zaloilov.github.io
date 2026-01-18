@@ -14,15 +14,13 @@ import "../styling.css";
 export default function FrontPage() {
   return (
     <div>
-      <div className="background-viewport-container">
-        <BackgroundShaderViewport/>
-      </div>
       <div style={{padding: "3%"}}>
         <h1 className = "title justify-self-center">Hi! I'm Vlad Zaloilov.</h1>
       </div>
       <div className = "hollow-row display-flex-col">
         <h1 className = "align-self-center">Welcome to my page!</h1>
         <h2 className = "align-self-center">Note: under construction</h2>
+        <h1 className = "align-self-center">Check back later for more!</h1>
       </div>
       <div className="spaced-container"
            style={{fontSize: "1rem"}}>
@@ -48,9 +46,9 @@ export default function FrontPage() {
           <p>OBJ file for model can be found on the Stanford website.</p>
           <p>Try rotating the bunny!</p>
         </div>
-          <div className ="content-viewport-wrapper align-self-center">
-            <ContentViewport/>
-          </div>
+        <div className ="content-viewport-wrapper align-self-center">
+          <ContentViewport/>
+        </div>
       </div>
       <div className="grid-viewport-container">
         <GridViewport/>

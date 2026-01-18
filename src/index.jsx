@@ -12,17 +12,16 @@ function website() {
   const root = createRoot(document.getElementById("root"));
   
   root.render(
-    <div className="base">
+    <div>
       <Header/>
-      <div className="content">
-        <FrontPage/>
+      <BackgroundShaderViewport/>
+      <FrontPage/>
+      <div className="footer-row spaced-container">
+        <p>some text</p>
+        <p>some more text</p>
+        <p>yet more text</p>
+        <p>even more</p>
       </div>
-        <div className="footer-row spaced-container">
-          <p>some text</p>
-          <p>some more text</p>
-          <p>yet more text</p>
-          <p>even more</p>
-        </div>
     </div>
   )
 }

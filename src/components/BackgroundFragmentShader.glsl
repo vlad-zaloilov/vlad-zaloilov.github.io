@@ -1,7 +1,6 @@
 uniform vec2 iResolution;
-uniform vec3 iMouse;
+uniform vec2 iMouse;
 uniform float iTime;
-uniform float iTimeDelta;
 /*
 I created this shader via ShaderToy and imported it into here by setting
 up appropriate conversions for ShaderToy's uniforms to the standard OpenGL ones
@@ -37,7 +36,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
    float radialDistort = 0.5/dist;
    
    for (float i = 1.; i < iter + 1.; i++) {
-       wset = 0.5*(sin((uv.x*i)+iTime)+i)/(max((i*radialDistort), i)+5.)+i/iter-1.1;
+       wset = 0.5*(sin((uv.x*i)+iTime)+i)/(max((i*radialDistort), i)+5.)+1.5*i/iter-1.1;
        // m = min(m, abs(wset)/fwidth(wset));
        // fragColor += clamp(vec4(fragCoord, 0., 0) * plot(fragCoord, wset), 0.0, 1.0);
        m += clamp(plot(uv, wset), 0.0, 1.0);

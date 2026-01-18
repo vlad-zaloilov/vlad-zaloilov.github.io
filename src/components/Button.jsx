@@ -3,7 +3,7 @@ import "../styling.css";
 
 export function HeaderButton({buttonText}) {
     return (
-        <button className="headerbutton">
+        <button className="header-button">
             {buttonText}
         </button>
     );
