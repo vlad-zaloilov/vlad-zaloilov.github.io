@@ -23,7 +23,6 @@ const rotMatrix = new Matrix3(
 ).transpose();
 
 rotVector = rotVector.applyMatrix3(rotMatrix);
-console.log(rotVector);
 
 export function ContentViewport() {
     return(

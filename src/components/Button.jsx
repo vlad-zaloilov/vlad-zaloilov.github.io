@@ -1,14 +1,6 @@
 import { useState } from "react";
 import "../styling.css";
 
-export function HeaderButton({buttonText}) {
-    return (
-        <button className="header-button">
-            {buttonText}
-        </button>
-    );
-}
-
 export function Button() {
     const [count, setCount] = useState(0);
 

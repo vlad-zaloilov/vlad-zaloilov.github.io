@@ -11,25 +11,14 @@ import React from "react";
 
 import "../styling.css";
 
-export default function FrontPage() {
+export default function AboutMe() {
   return (
     <div>
       <div style={{padding: "3%"}}>
         <h1 className = "title justify-self-center">Hi! I'm Vlad Zaloilov.</h1>
       </div>
-      <div className = "hollow-row display-flex-col">
-        <h1 className = "align-self-center">Welcome to my page!</h1>
-        <h2 className = "align-self-center">Note: under construction</h2>
-        <h1 className = "align-self-center">Check back later for more!</h1>
-      </div>
-      <div className="spaced-container"
-           style={{fontSize: "1rem"}}>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-      </div>
-      <div className="content-row">
+      <BackgroundShaderViewport/>
+      <div className="subtitle-row">
         <p className="subtitle">I'm Vlad Zaloilov, a second-year computer science student at Simon Fraser University,
         with a strong interest in graphics programming, 3D modelling, and mathematics. I enjoy working on problems that sit at the intersection of theory and implementation, with a focus on turning mathematical ideas into efficient, visual systems.
         </p>
@@ -38,6 +27,13 @@ export default function FrontPage() {
           <p className="subtitle">You can find more of my work at my github:</p>
           <a href ="https://github.com/DuhDiamond" className="link">https://github.com/DuhDiamond</a>
         </div>
+      </div>
+      <div className="spaced-container"
+           style={{fontSize: "1rem"}}>
+        <Button/>
+        <Button/>
+        <Button/>
+        <Button/>
       </div>
       <div className = "content-row display-flex-row">
         <div className="content-text">

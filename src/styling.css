@@ -15,6 +15,11 @@
     color:#74beff;
 }
 
+.base {
+    display: flex;
+    flex-direction: column;
+}
+
 .break {
     margin:1% 0% 1% 0%;
 }
@@ -26,10 +31,10 @@
 
 .background-viewport-container {
     z-index: 0;
-    position: absolute;
+    position: relative;
 
-    top: 40%;
-
+    margin-bottom:-5%;
+    
     height: 100%;
     width: 100%;
 }
@@ -40,7 +45,7 @@
 }
 
 .header-row {
-    z-index:2;
+    z-index:3;
 
     display:flex;
     justify-content:space-evenly;
@@ -51,7 +56,7 @@
     min-height:fit-content;
     color:#d0deff;
     background-color:rgb(132, 132, 132);
-    position:fixed;
+    position:sticky;
     top:0;
 }
 
@@ -160,6 +165,18 @@ h3 {
     position:relative;
 }
 
+.subtitle-row {
+    z-index: 1;
+    justify-content:space-around;
+    margin: 3% 0% 3% 0%;
+    padding: 2% 5% 2% 5%;
+    background-color: rgb(34, 34, 34);
+    border-radius:0rem;
+    box-shadow: 0rem 0.7rem 0rem rgb(14, 14, 14);
+    
+    position:relative;
+}
+
 
 .content-inner-row {
     z-index: 1;
@@ -173,25 +190,35 @@ h3 {
     justify-content: space-around;
     margin: 3% 0% 3% 0%;
     padding: 1%;
-    background-color: rgb(49, 49, 49);
+    background-color: rgba(49, 49, 49, 0.815);
     border-radius: 0rem;
-    box-shadow: 0rem 0.7rem 0rem rgb(14, 14, 14);
+    box-shadow: 0rem 0.7rem 0rem rgba(14, 14, 14, 0.438);
     position:relative;
 }
 
 .title {
-    margin: 10% 0% 0% 0%;
+    margin: 0% 0% 0% 0%;
     z-index: 2;
     font-size: 5rem;
     font-weight: 300;
     color:#d6d6d6;
     text-shadow: 0rem 0.4rem 0rem rgb(83, 83, 83);
+    position:relative;
 }
 
 .subtitle {
     z-index: 1;
     font-size: 1.5rem;
     font-weight: 300;
+    color:#d6d6d6;
+}
+
+.contact-info-text {
+    z-index: 1;
+    font-family: 'Poppins';
+    font-optical-sizing: auto;
+    font-weight:550;
+    font-size:2rem;
     color:#d6d6d6;
 }
 
@@ -246,6 +273,11 @@ h3 {
     background-color:rgb(132, 132, 132);
 }
 
+a.header-button.active {
+    color:#ffffff;
+    font-weight:200;
+}
+
 
 .button1 {
     flex: 1;
@@ -263,7 +295,7 @@ h3 {
     background-color: rgb(41, 41, 41);
     border:#4f4f4f;
     border-style: solid;
-    border-width: medium;
+    border-width: 0.2rem;
     border-radius: 1rem;
     padding:1rem;
     margin: 1rem;

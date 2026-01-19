@@ -11,12 +11,12 @@ import DefaultVertexShader from "./BackgroundVertexShader.glsl";
 import "../styling.css";
 
 /*
-This margin is used to offset the shader's mouse tracking
-for the CSS padding (decimal rather than %)
-I have spent many hours trying to figure out a dynamic way...
+Scaling factor for the height, to more easily change canvas sizing
+if I want to make the shader smaller
+Probably temporary until I find a way to get CSS to update with it
+(By default 3JS's canvas collapses if its parent doesn't have a definite size)
 */
-
-const top_margin = 0.25;
+const heightFactor = 0.5;
 
 function ShaderFrameUpdater({ uniforms }) {
     useFrame((state) => {
@@ -27,18 +27,20 @@ function ShaderFrameUpdater({ uniforms }) {
 export function BackgroundShaderViewport() {
 
     const [dimensions, setDimensions] = useState({
-        width: document.documentElement.scrollWidth,
-        height: document.documentElement.scrollHeight
+        width: window.innerWidth,
+        height: window.innerHeight
     });
 
     /*
     Setting up a bunch of uniforms which run each frame that Shadertoy
     uses, to make it easy to import a shader I make from Shadertoy to
     "default" GLSL; useMemo utilized to cache values in between, so it doesn't
-    waste time recomputing things if they haven't changed (shader will look the same) 
+    waste time recomputing things if they haven't changed (shader will look the same)
+
     */ 
+
     const uniforms = useMemo(() => ({
-        iResolution: { value: new THREE.Vector2(1, 1)},
+        iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight)},
         iMouse: { value: new THREE.Vector2(0, 0)},
         iTime: { value: 0.0}
     }), []);
@@ -90,27 +92,23 @@ export function BackgroundShaderViewport() {
     ), []);
 
     const BackgroundGeometry = useMemo(() => (
-        <planeGeometry args={[dimensions.width, dimensions.height]} />
+        <planeGeometry args={[dimensions.width, dimensions.height*heightFactor]} />
     ), [dimensions.width, dimensions.height]);
 
     return(
         <div
         ref={containerReference}
         className="background-viewport-container"
+        style={{height: `${dimensions.height*heightFactor}px`}}
         >
             <Canvas
                 fallback=
                 {<div>This website has some WebGL 3D graphics,
                 but it seems that your device doesn't support WebGL</div>}
-                frameloop="always"
             >
                 <OrthographicCamera
                 makeDefault
                 position={[0, 0, 0.5]}
-                left={-dimensions.width / 2}
-                right={dimensions.width / 2}
-                top={dimensions.height / 2}
-                bottom={-dimensions.height / 2}
                 near={0.01}
                 far={10000}
                 />
