@@ -17,7 +17,6 @@ export function ThreeDProject() {
             </div>
             <video className="video-fit"
             controls
-            autoPlay
             muted
             loop
             >
