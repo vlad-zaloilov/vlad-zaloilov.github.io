@@ -8,7 +8,7 @@ export function ThreeDProject() {
                     done several major overhauls since, with the most recent texture update
                     completed six months ago.
                 </p>
-                <div className="break2"></div>
+                <div className="break"></div>
                 <p>
                     I modelled and rigged it in Blender using the constraints system,
                     textured it with Blender's shader nodes and Adobe Substance Painter,
@@ -21,7 +21,7 @@ export function ThreeDProject() {
             muted
             loop
             >
-            <source src="/videos/robotbug.mp4" type="video/mp4" />
+            <source src="/videos/RobotBug.mp4" type="video/mp4" />
             Your browser does not support the video tag.
             </video>
         </div>
