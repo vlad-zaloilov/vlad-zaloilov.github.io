@@ -1,20 +1,19 @@
-import { Button, ButtonGrid } from "../components/Button";
+import { Button } from "../components/Button";
 import { ContentViewport } from "../components/ContentViewport";
 import { GridViewport } from "../components/GridViewport";
-import { extend, Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { extend } from "@react-three/fiber";
+import dynamic from "next/dynamic";
 extend({ Button });
 
-import { BackgroundShaderViewport } from "../components/BackgroundShaderViewport";
-
-import React from "react";
-
-import "../styling.css";
+const BackgroundShaderViewport = dynamic(
+  () => import("../components/BackgroundShaderViewport").then(mod => ({ default: mod.BackgroundShaderViewport })),
+  { ssr: false }
+);
 
 export default function AboutMe() {
   return (
     <div>
-      <div style={{padding: "3%"}}>
+      <div>
         <h1 className = "title justify-self-center">Hi! I'm Vlad Zaloilov.</h1>
       </div>
       <BackgroundShaderViewport/>
@@ -27,13 +26,6 @@ export default function AboutMe() {
           <p className="subtitle">You can find more of my work at my github:</p>
           <a href ="https://github.com/DuhDiamond" className="link">https://github.com/DuhDiamond</a>
         </div>
-      </div>
-      <div className="spaced-container"
-           style={{fontSize: "1rem"}}>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
       </div>
       <div className = "content-row display-flex-row">
         <div className="content-text">

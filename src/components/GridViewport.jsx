@@ -1,6 +1,7 @@
-import { useRef } from "react";
+"use client"
+
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, OrthographicCamera, PerspectiveCamera } from "@react-three/drei";
+import { PerspectiveCamera } from "@react-three/drei";
 
 function CustomGridHelper() {
     return(
@@ -9,13 +10,6 @@ function CustomGridHelper() {
 }
 
 export function GridViewport() {
-    // const lookAtGrid = camera;
-    /*
-    const cameraReference = useUpdate(() => {
-        
-    }, [ lookAtGrid ]);
-    */
-
     return(
         <Canvas
             fallback=

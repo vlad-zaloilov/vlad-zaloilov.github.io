@@ -1,7 +1,8 @@
-import { NavLink, Link } from "react-router";
+"use client"
 
-import "../styling.css"
+import Link from "next/link";
 
+/*
 function HeaderButton({buttonText}) {
     return (
         <button className="header-button">
@@ -9,27 +10,28 @@ function HeaderButton({buttonText}) {
         </button>
     );
 }
+*/
 
 export default function Header() {
 
     return(
         <nav className="header-row">
             
-            <NavLink to="/" className="header-button">
+            <Link href="/" className="header-button ${pathname === '/' ? 'active' : ''}`">
                 About Me
-            </NavLink>
+            </Link>
             
-            <NavLink to="/ProgrammingProjects" className="header-button">
+            <Link href="/ProgrammingProjects" className="header-button">
                 Programming Projects
-            </NavLink>
+            </Link>
 
-            <NavLink to="/3DProjects" className="header-button">
+            <Link href="/3DProjects" className="header-button">
                 3D Projects
-            </NavLink>
+            </Link>
 
-            <NavLink to="/ContactInformation" className="header-button">
+            <Link href="/ContactInformation" className="header-button">
                 Contact Information
-            </NavLink>
+            </Link>
         </nav>
     );
 };

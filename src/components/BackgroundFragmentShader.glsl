@@ -29,10 +29,10 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     float m = 0.;
     float wset;
     float dist = length(uv-mouse);
-    float radialDistort = 0.5/dist;
+    float radialDistort = 0.7/dist;
     
-    for (float i = 1.; i < iter; i++) {
-        wset = 0.5*(sin((uv.x*i)+iTime)+i)/(max((i*radialDistort), i)+5.)+0.5*i/iter-0.9;
+    for (float i = 0.; i < iter; i++) {
+        wset = 0.5*(sin((uv.x*i)+iTime)+i)/(max((i+5.)*radialDistort, i)+5.)+1.6*i/iter-0.9;
         // m = min(m, abs(wset)/fwidth(wset));
         // fragColor += clamp(vec4(fragCoord, 0., 0) * plot(fragCoord, wset), 0.0, 1.0);
         m += clamp(plot(uv, wset), 0.0, 1.0);

@@ -1,18 +1,15 @@
-import { Button, ButtonGrid } from "../components/Button";
+"use client"
+
+import { Button } from "../components/Button";
 import { GridViewport } from "../components/GridViewport";
-import { extend, Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { extend } from "@react-three/fiber";
 extend({ Button });
 
-import React from "react";
-
-import "../styling.css";
-
-export default function ThreeDProjects() {
+export default function ProgrammingProjects() {
   return (
     <div>
-      <div style={{padding: "3%"}}>
-        <h1 className = "title justify-self-center">3D Projects</h1>
+      <div>
+        <h1 className = "title justify-self-center">Programming Projects</h1>
       </div>
       <div className = "hollow-row display-flex-col">
         <h1 className = "align-self-center">Welcome to my page!</h1>

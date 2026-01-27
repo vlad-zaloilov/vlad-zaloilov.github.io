@@ -1,5 +1,6 @@
+"use client"
+
 import { useState } from "react";
-import "../styling.css";
 
 export function Button() {
     const [count, setCount] = useState(0);

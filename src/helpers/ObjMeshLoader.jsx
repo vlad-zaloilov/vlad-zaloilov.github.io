@@ -1,7 +1,6 @@
-import React, { useMemo, useEffect } from "react";
-import * as THREE from "three";
-import { MeshBasicMaterial } from "three";
-import { Canvas, useFrame } from "@react-three/fiber";
+"use client"
+
+import React, { useEffect } from "react";
 
 /*
     TODO:
@@ -66,8 +65,10 @@ export function ObjMeshLoader( {object, colour} ) {
 
                             const vertexData = parsed.slice(1);
 
+                            /*
                             for (const set of vertexData) {
                             }
+                            */
 
                             if (vertexData.length == 4) {
 
@@ -117,7 +118,7 @@ export function ObjMeshLoader( {object, colour} ) {
         objReader(object).then((loadedVertices) => {
             setVertices(loadedVertices);
         });
-    }, []);
+    }, [object]);
 
     if (!vertices) {
         /*

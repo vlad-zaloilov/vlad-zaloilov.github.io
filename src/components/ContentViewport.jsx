@@ -1,12 +1,9 @@
-import React from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { SphereGeometry, Matrix3, Vector3 } from "three";
+"use client"
+
+import { Canvas } from "@react-three/fiber";
+import { Matrix3, Vector3 } from "three";
 import { ObjMeshLoader } from "../helpers/ObjMeshLoader";
 import { OrbitControls } from "@react-three/drei";
-
-import { Html } from "@react-three/drei";
-
-import "../styling.css";
 
 // Simple matrix setup to get this finnicky model (stanford bunny) camera's starting position right
 // (there's probably an easier way to do this, but it's good practice at least)

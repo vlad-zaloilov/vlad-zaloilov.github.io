@@ -1,13 +1,17 @@
-import "../styling.css";
+import { Button } from "./Button";
 
-export default function footer() {
+export default function Footer() {
     
     return (
         <div className="footer-row spaced-container">
-            <p>some text</p>
-            <p>some more text</p>
-            <p>yet more text</p>
-            <p>even more</p>
+            <div className="spaced-container"
+                style={{fontSize: "1rem"}}>
+                <Button/>
+                <Button/>
+                <Button/>
+                <Button/>
+            </div>
+            
         </div>
     );
 };
