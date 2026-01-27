@@ -20,7 +20,7 @@ export function ThreeDProject() {
             muted
             loop
             >
-            <source src="/videos/robotbug.mp4" type="video/mp4" />
+            <source src="https://github.com/vlad-zaloilov/vlad-zaloilov.github.io/blob/gh-pages/videos/robotbug.mp4" type="video/mp4" />
             Your browser does not support the video tag.
             </video>
         </div>
