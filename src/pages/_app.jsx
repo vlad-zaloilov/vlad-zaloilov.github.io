@@ -6,10 +6,10 @@ import { Montserrat, Poppins, Roboto_Flex } from "next/font/google";
 export const dynamic = "force-static";
 
 export const Metadata = {
-    title: "Vlad Zaloilov's Portfolio Website",
-    description: "Website showcasing some of my work",
-    keywords: "HTML, CSS, JavaScript, 3D, Graphics, Graphics Programming",
-    name: "author"
+  title: "Vlad Zaloilov's Portfolio Website",
+  description: "Website showcasing some of my work",
+  keywords: "HTML, CSS, JavaScript, 3D, Graphics, Graphics Programming",
+  name: "author"
 }
 
 /* I do not know of a better way at the moment to handle fonts to work

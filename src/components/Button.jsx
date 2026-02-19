@@ -11,7 +11,6 @@ export function Button() {
     
     return (
         <button className="button1" onClick={handleClick}>
-            This is a button. It has been clicked {count} times.
         </button>
     );
 }

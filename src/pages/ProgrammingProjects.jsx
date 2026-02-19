@@ -2,7 +2,9 @@
 
 import { Button } from "../components/Button";
 import { GridViewport } from "../components/GridViewport";
+import { RenderingEngineProject } from "../components/ProgrammingProjectsComponents";
 import { extend } from "@react-three/fiber";
+
 extend({ Button });
 
 export default function ProgrammingProjects() {
@@ -12,12 +14,10 @@ export default function ProgrammingProjects() {
         <h1 className = "title justify-self-center">Programming Projects</h1>
       </div>
       <div className = "hollow-row display-flex-col">
-        <h1 className = "align-self-center">Welcome to my page!</h1>
-        <h2 className = "align-self-center">Note: under construction</h2>
-        <h1 className = "align-self-center">Check back later for more!</h1>
+        <h1 className = "align-self-center">Page content last updated: February 19th</h1>
       </div>
-      <div className="grid-viewport-container">
-        <GridViewport/>
+      <div>
+        <RenderingEngineProject/>
       </div>
     </div>
   );

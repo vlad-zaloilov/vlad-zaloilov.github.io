@@ -1,17 +1,11 @@
 import { Button } from "./Button";
+import { GridViewport } from "./GridViewport";
 
 export default function Footer() {
     
     return (
-        <div className="footer-row spaced-container">
-            <div className="spaced-container"
-                style={{fontSize: "1rem"}}>
-                <Button/>
-                <Button/>
-                <Button/>
-                <Button/>
-            </div>
-            
+        <div className ="footer">
+            <GridViewport/>
         </div>
     );
 };
