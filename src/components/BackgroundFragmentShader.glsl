@@ -28,7 +28,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
     
     for (int i = 0; i < iter; i++) {
         float fi = float(i);
-        float wset = 0.5*(sin(uv.x*fi)*c + cos(uv.x*fi)*s + 5.)/(max(radialDistort, fi)+5.)+2.*fi/float(iter)-1.;
+        float wset = 0.5*(sin(uv.x*fi)*c + cos(uv.x*fi)*s + 5.)/(max(radialDistort, fi)+5.)+1.6*fi/float(iter)-1.;
         m += plot(uv, wset);
     }
 

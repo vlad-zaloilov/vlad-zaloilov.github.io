@@ -87,12 +87,11 @@ p {
 
 .background-viewport-container {
     z-index: 0;
-    position: sticky;
-
-    margin: 0% 0% 0% 0%;
+    position: relative;
 
     width: 100%;
     height: 100%;
+    overflow: clip;
 
 }
 
