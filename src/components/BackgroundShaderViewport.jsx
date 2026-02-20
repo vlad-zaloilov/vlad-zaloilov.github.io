@@ -24,11 +24,12 @@ function ShaderMesh({uniforms, dimensions}) {
     ), [dimensions.width, dimensions.height]);
 
     useFrame((state) => {
-        uniforms.iTime.value = state.clock.elapsedTime;
+        uniforms.s.value = Math.sin(state.clock.elapsedTime);
+        uniforms.c.value = Math.cos(state.clock.elapsedTime)
     });
 
     return (
-        <mesh scale={viewport.width}>
+        <mesh>
             {ShaderGeometry}
             {ShaderMaterial}
         </mesh>
@@ -52,8 +53,10 @@ export function BackgroundShaderViewport() {
 
     const uniforms = useMemo(() => ({
         iResolution: { value: new THREE.Vector2(dimensions.width, dimensions.height)},
-        iMouse: { value: new THREE.Vector2(0, 0)},
-        iTime: { value: 0.0 }
+        mouse: { value: new THREE.Vector2(0, 0)},
+        smallestRatio: { value: 1./Math.min(dimensions.width, dimensions.height) },
+        s: { value: 0. },
+        c: { value: 1. },
     }), []);
 
     const handleMouseMove = ((e) => {
@@ -61,9 +64,9 @@ export function BackgroundShaderViewport() {
         if (containerReference.current) {
             const rect = containerReference.current.getBoundingClientRect();
             
-            uniforms.iMouse.value.set(
-                e.clientX*devicePixelRatio,
-                (rect.bottom-e.clientY)*devicePixelRatio
+            uniforms.mouse.value.set(
+                (2.0 * e.clientX*devicePixelRatio - dimensions.width) * uniforms.smallestRatio.value,
+                (2.0 * (rect.bottom-e.clientY)*devicePixelRatio - dimensions.height) * uniforms.smallestRatio.value
             );
         }
     });
@@ -106,7 +109,7 @@ export function BackgroundShaderViewport() {
                 makeDefault
                 position={[0, 0, 0.1]}
                 near={0.01}
-                far={100}
+                far={1}
                 left={dimensions.width / -2}
                 right={dimensions.width / 2}
                 top={dimensions.height / 2}
